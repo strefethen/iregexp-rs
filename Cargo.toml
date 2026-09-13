@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 rust-version = "1.85"
 description = "A checking and matching implementation of RFC 9485 I-Regexp"
+repository = "https://github.com/strefethen/iregexp-rs"
 license = "MIT AND BSD-3-Clause"
 publish = false
 build = "build.rs"

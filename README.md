@@ -105,6 +105,6 @@ and [provenance manifest](PROVENANCE.json) preserve the source of the approved
 work. The proof is historical; the root library's asserting suite owns current
 behavior. See [THIRD-PARTY.md](THIRD-PARTY.md) for source and license attribution.
 
-This is a local repository and working crate name. No registry name is reserved,
-no remote has been created, and nothing has been published. Publication and
-Arazzo integration are separate work.
+Source repository: [strefethen/iregexp-rs](https://github.com/strefethen/iregexp-rs).
+The crate has not been published to crates.io. Registry publication and
+Arazzo integration remain separate work.
