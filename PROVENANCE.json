@@ -1,0 +1,90 @@
+{
+  "import_date": "2026-09-12",
+  "files": [
+    {
+      "path": "experiments/codegen-proof/Cargo.toml",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/Cargo.toml",
+      "sha256": "2240a238af6a91785937cd929a36f423897f3b072104e5aba42459154410f349"
+    },
+    {
+      "path": "experiments/codegen-proof/Cargo.lock",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/Cargo.lock",
+      "sha256": "5352b6a18710f1a3cbc6fdb622db64ef71dd1e1d83be824485550b4864de355b"
+    },
+    {
+      "path": "experiments/codegen-proof/build.rs",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/build.rs",
+      "sha256": "2b175555cb6cbe24b5967ab76f3b7c5bab38bbe31e391f38d657cb65bfa8230b"
+    },
+    {
+      "path": "experiments/codegen-proof/src/main.rs",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/src/main.rs",
+      "sha256": "0397d4bb51a47c1a7e30410eefa10e7e1d430fb08eb0cd21f716c0eb19ec4425"
+    },
+    {
+      "path": "experiments/codegen-proof/grammar.abnf",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/grammar.abnf",
+      "sha256": "01b32db4d20ffca6963bbcb2f1b063ea3950d7ab1c19e7fd4d61cc7906192430"
+    },
+    {
+      "path": "experiments/codegen-proof/proof.json",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/proof.json",
+      "sha256": "47f8eada4b4906f52753d0ed75ce1cce793d736070173e5c094fb73305030432"
+    },
+    {
+      "path": "experiments/codegen-proof/provenance.json",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/provenance.json",
+      "sha256": "7f2ca54f484b35d135891051386c06fc89c1a117e57f62ff35f85a35608ba502"
+    },
+    {
+      "path": "experiments/codegen-proof/README.md",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/README.md",
+      "sha256": "b223661e275a7db81f7a9dd87d298c2024abc414a7b7e764fe87e34466a5d9fc"
+    },
+    {
+      "path": "experiments/codegen-proof/LICENSE-RFC9485.txt",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/LICENSE-RFC9485.txt",
+      "sha256": "4fd574bb41ca5da3f74cf8ef9e02122e50c65ccd290403a148f045a730f4447d"
+    },
+    {
+      "path": "grammar/rfc9485.abnf",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/grammar.abnf",
+      "sha256": "01b32db4d20ffca6963bbcb2f1b063ea3950d7ab1c19e7fd4d61cc7906192430"
+    },
+    {
+      "path": "grammar/LICENSE-RFC9485.txt",
+      "source": "pre-repository-qualification/rfc9485-codegen-proof/LICENSE-RFC9485.txt",
+      "sha256": "4fd574bb41ca5da3f74cf8ef9e02122e50c65ccd290403a148f045a730f4447d"
+    },
+    {
+      "path": "spec/rfc9485.txt",
+      "source": "pre-repository-qualification/serde-qualification/evidence/rfc9485.txt",
+      "sha256": "61e7addfe64e3b0fbff96619d067f3812aa9960cf9b87526d064c3fb3bfbe91f"
+    },
+    {
+      "path": "spec/rfc9535.txt",
+      "source": "pre-repository-qualification/serde-qualification/evidence/rfc9535.txt",
+      "sha256": "bfcb53387d47e3b807bdb695d0a3e136f0c515947289d9c67df354f12ae1fda5"
+    },
+    {
+      "path": "tests/fixtures/regex-cases.json",
+      "source": "pre-repository-qualification/serde-qualification/data/regex-cases.json",
+      "sha256": "298d4e5cfdb69bd361a27b5430d3895b53c510cd71008ec5bd78f4a4076a385e"
+    },
+    {
+      "path": "tests/fixtures/regex-challenge-cases.json",
+      "source": "pre-repository-qualification/serde-qualification/data/regex-challenge-cases.json",
+      "sha256": "dead72d4ddd611830fad4e24554628844c8dbc49b321a49d3a5271ca923ec7b4"
+    },
+    {
+      "path": "experiments/qualification/iregexp_adapter.rs",
+      "source": "pre-repository-qualification/serde-qualification/src/iregexp_adapter.rs",
+      "sha256": "2a4fed79740144d0577f5bafa128a03662e0dedffb9379a390c2c80d461ec8fb"
+    },
+    {
+      "path": "experiments/qualification/regex_tests.rs",
+      "source": "pre-repository-qualification/serde-qualification/tests/regex.rs",
+      "sha256": "e6ae5375983945d7b90e1d316ebf643db33edece4bd28b405d11f47585d07092"
+    }
+  ]
+}

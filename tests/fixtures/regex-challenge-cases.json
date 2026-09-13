@@ -1,0 +1,443 @@
+[
+  {
+    "name": "class leading and trailing hyphen only",
+    "pattern": "[--]",
+    "value": "-",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "class leading and trailing hyphen excludes letter",
+    "pattern": "[--]",
+    "value": "a",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "negative hyphen only",
+    "pattern": "[^--]",
+    "value": "a",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "negative hyphen only rejects hyphen",
+    "pattern": "[^--]",
+    "value": "-",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "negative caret only",
+    "pattern": "[^^]",
+    "value": "a",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "negative caret only rejects caret",
+    "pattern": "[^^]",
+    "value": "^",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "escaped positive leading caret",
+    "pattern": "[\\^a]",
+    "value": "^",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "leading hyphen before range",
+    "pattern": "[-a-c]",
+    "value": "-",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "leading hyphen before range covers interior",
+    "pattern": "[-a-c]",
+    "value": "b",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "leading hyphen before range rejects outside",
+    "pattern": "[-a-c]",
+    "value": "d",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "trailing hyphen after category",
+    "pattern": "[\\p{L}-]",
+    "value": "-",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "leading hyphen before category",
+    "pattern": "[-\\p{L}]",
+    "value": "é",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "escaped hyphen range endpoint",
+    "pattern": "[\\--/]",
+    "value": ".",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "escaped hyphen range endpoint excludes zero",
+    "pattern": "[\\--/]",
+    "value": "0",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "escaped caret range endpoint",
+    "pattern": "[A-\\^]",
+    "value": "[",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "escaped caret range endpoint includes backslash",
+    "pattern": "[A-\\^]",
+    "value": "\\",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "escaped caret range endpoint excludes underscore",
+    "pattern": "[A-\\^]",
+    "value": "_",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "control range includes formfeed",
+    "pattern": "[\\n-\\r]",
+    "value": "\f",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "negative Unicode range",
+    "pattern": "[^α-ω]",
+    "value": "β",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "negative Unicode range accepts emoji",
+    "pattern": "[^α-ω]",
+    "value": "😀",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "literal class doubled & includes punctuation",
+    "pattern": "[a&&b]",
+    "value": "&",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "literal class doubled & includes a",
+    "pattern": "[a&&b]",
+    "value": "a",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "literal class doubled & rejects unrelated",
+    "pattern": "[a&&b]",
+    "value": "~",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "literal class doubled ~ includes punctuation",
+    "pattern": "[a~~b]",
+    "value": "~",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "literal class doubled ~ includes a",
+    "pattern": "[a~~b]",
+    "value": "a",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "literal class doubled ~ rejects unrelated",
+    "pattern": "[a~~b]",
+    "value": "&",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "literal class doubled | includes punctuation",
+    "pattern": "[a||b]",
+    "value": "|",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "literal class doubled | includes a",
+    "pattern": "[a||b]",
+    "value": "a",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "literal class doubled | rejects unrelated",
+    "pattern": "[a||b]",
+    "value": "&",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "raw dollar literal",
+    "pattern": "$",
+    "value": "$",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "raw dollar literal rejects empty",
+    "pattern": "$",
+    "value": "",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "anchored-looking pattern literal search",
+    "pattern": "^a$",
+    "value": "prefix ^a$ suffix",
+    "full": false,
+    "expected": true
+  },
+  {
+    "name": "anchored-looking pattern does not anchor",
+    "pattern": "^a$",
+    "value": "a",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "dollar escape invalid",
+    "pattern": "\\$",
+    "value": "$",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "caret escape valid",
+    "pattern": "\\^",
+    "value": "^",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "raw NUL pattern valid",
+    "pattern": "\u0000",
+    "value": "\u0000",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "literal formfeed pattern valid",
+    "pattern": "\f",
+    "value": "\f",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "formfeed escape invalid",
+    "pattern": "\\f",
+    "value": "\f",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "unicode codepoint escape invalid",
+    "pattern": "\\u0041",
+    "value": "A",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "dot permits line separator",
+    "pattern": ".",
+    "value": " ",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "dot permits paragraph separator",
+    "pattern": ".",
+    "value": " ",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "dot permits supplementary character",
+    "pattern": ".",
+    "value": "😀",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "dot rejects CR",
+    "pattern": ".",
+    "value": "\r",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "dot rejects LF",
+    "pattern": ".",
+    "value": "\n",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "private use category",
+    "pattern": "\\p{Co}",
+    "value": "",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "format category",
+    "pattern": "\\p{Cf}",
+    "value": "‍",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "surrogate category name invalid",
+    "pattern": "\\p{Cs}",
+    "value": "",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "complement category matches supplementary symbol",
+    "pattern": "\\P{L}",
+    "value": "😀",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "zero repetitions",
+    "pattern": "a{0}",
+    "value": "",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "leading zero exact quantifier",
+    "pattern": "a{0010}",
+    "value": "aaaaaaaaaa",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "leading zero range quantifier",
+    "pattern": "a{00,02}",
+    "value": "aa",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "multidigit range quantifier",
+    "pattern": "a{10,12}",
+    "value": "aaaaaaaaaaa",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "empty alternative repeated",
+    "pattern": "((a|){2}){2}",
+    "value": "aaa",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "empty branch match",
+    "pattern": "a|",
+    "value": "",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "empty regex substring",
+    "pattern": "",
+    "value": "anything",
+    "full": false,
+    "expected": true
+  },
+  {
+    "name": "escaped dot remains literal",
+    "pattern": "\\.",
+    "value": ".",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "dot class remains literal",
+    "pattern": "[.]",
+    "value": ".",
+    "full": true,
+    "expected": true
+  },
+  {
+    "name": "empty class invalid",
+    "pattern": "[]",
+    "value": "a",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "prohibited caret-only class",
+    "pattern": "[^]",
+    "value": "^",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "category range endpoint invalid",
+    "pattern": "[a-\\p{L}]",
+    "value": "a",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "two category range invalid",
+    "pattern": "[\\p{L}-\\p{N}]",
+    "value": "a",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "nested class syntax invalid",
+    "pattern": "[[a]]",
+    "value": "a",
+    "full": true,
+    "expected": false
+  },
+  {
+    "name": "ascii named class syntax invalid",
+    "pattern": "[[:alpha:]]",
+    "value": "a",
+    "full": true,
+    "expected": false
+  }
+]

@@ -1,0 +1,7 @@
+/target/
+**/target/
+/experiments/codegen-proof/rerun.json
+/evidence/generated/
+/evidence/*.log
+/evidence/*-live.json
+.DS_Store

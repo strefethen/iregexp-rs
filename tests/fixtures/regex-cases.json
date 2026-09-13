@@ -1,0 +1,1538 @@
+[
+  {
+    "name": "anchors_are_literals",
+    "pattern": "^a$",
+    "value": "^a$",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "anchors_do_not_anchor",
+    "pattern": "^a$",
+    "value": "a",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "search_literal_anchors",
+    "pattern": "^a$",
+    "value": "x^a$y",
+    "match": false,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "literal_dollar",
+    "pattern": "$",
+    "value": "$",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "literal_caret",
+    "pattern": "^",
+    "value": "^",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escaped_caret",
+    "pattern": "\\^",
+    "value": "^",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "empty_pattern_empty",
+    "pattern": "",
+    "value": "",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "empty_pattern_nonempty",
+    "pattern": "",
+    "value": "abc",
+    "match": false,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "alternation_entire_string",
+    "pattern": "a|b",
+    "value": "ab",
+    "match": false,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "alternation_a",
+    "pattern": "a|b",
+    "value": "a",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "alternation_b",
+    "pattern": "a|b",
+    "value": "b",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "match_rejects_final_lf",
+    "pattern": "a",
+    "value": "a\n",
+    "match": false,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "dot_cr",
+    "pattern": ".",
+    "value": "\r",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "dot_lf",
+    "pattern": ".",
+    "value": "\n",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "dot_line_sep",
+    "pattern": ".",
+    "value": " ",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "dot_paragraph_sep",
+    "pattern": ".",
+    "value": " ",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "dot_nonbmp",
+    "pattern": ".",
+    "value": "😀",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "dot_nul",
+    "pattern": ".",
+    "value": "\u0000",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "dot_search_across_cr",
+    "pattern": "a.b",
+    "value": "a\rb",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "dot_class_is_literal",
+    "pattern": "[.]",
+    "value": ".",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "dot_class_not_wildcard",
+    "pattern": "[.]",
+    "value": "x",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "dot_escaped_literal",
+    "pattern": "\\.",
+    "value": ".",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_and_a",
+    "pattern": "[a&&b]",
+    "value": "a",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_and_b",
+    "pattern": "[a&&b]",
+    "value": "b",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_and_&",
+    "pattern": "[a&&b]",
+    "value": "&",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_and_other",
+    "pattern": "[a&&b]",
+    "value": "z",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "class_or_a",
+    "pattern": "[a||b]",
+    "value": "a",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_or_b",
+    "pattern": "[a||b]",
+    "value": "b",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_or_|",
+    "pattern": "[a||b]",
+    "value": "|",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_or_other",
+    "pattern": "[a||b]",
+    "value": "z",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "class_xor_a",
+    "pattern": "[a~~b]",
+    "value": "a",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_xor_b",
+    "pattern": "[a~~b]",
+    "value": "b",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_xor_~",
+    "pattern": "[a~~b]",
+    "value": "~",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_xor_other",
+    "pattern": "[a~~b]",
+    "value": "z",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "class_[a-z]_'k'",
+    "pattern": "[a-z]",
+    "value": "k",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_[a-z]_'z'",
+    "pattern": "[a-z]",
+    "value": "z",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_[-a]_'-'",
+    "pattern": "[-a]",
+    "value": "-",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_[a-]_'-'",
+    "pattern": "[a-]",
+    "value": "-",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_[--]_'-'",
+    "pattern": "[--]",
+    "value": "-",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_[^a]_'b'",
+    "pattern": "[^a]",
+    "value": "b",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_[^^]_'a'",
+    "pattern": "[^^]",
+    "value": "a",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_[a^]_'^'",
+    "pattern": "[a^]",
+    "value": "^",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_[\\]-a]_'_'",
+    "pattern": "[\\]-a]",
+    "value": "_",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_[a\\-]_'-'",
+    "pattern": "[a\\-]",
+    "value": "-",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "class_[\\n-\\r]_'\\x0b'",
+    "pattern": "[\\n-\\r]",
+    "value": "\u000b",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "negated_class_excludes",
+    "pattern": "[^a]",
+    "value": "a",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "negated_caret_class",
+    "pattern": "[^^]",
+    "value": "^",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "multidigit_exact",
+    "pattern": "a{12}",
+    "value": "aaaaaaaaaaaa",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "multidigit_range",
+    "pattern": "a{10,12}",
+    "value": "aaaaaaaaaaa",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "multidigit_open",
+    "pattern": "a{10,}",
+    "value": "aaaaaaaaaaaaaaa",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "multidigit_too_short",
+    "pattern": "a{10,}",
+    "value": "aaaaaaaaa",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "zero_repeat",
+    "pattern": "a{0}",
+    "value": "",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "leading_zero_repeat",
+    "pattern": "a{012}",
+    "value": "aaaaaaaaaaaa",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "group_alternation",
+    "pattern": "(ab|cd)+",
+    "value": "abcd",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "empty_branch",
+    "pattern": "a|",
+    "value": "",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "empty_group",
+    "pattern": "()",
+    "value": "",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "category_L",
+    "pattern": "\\p{L}",
+    "value": "é",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_L",
+    "pattern": "\\P{L}",
+    "value": "é",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Ll",
+    "pattern": "\\p{Ll}",
+    "value": "é",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Ll",
+    "pattern": "\\P{Ll}",
+    "value": "é",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Lm",
+    "pattern": "\\p{Lm}",
+    "value": "ʰ",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Lm",
+    "pattern": "\\P{Lm}",
+    "value": "ʰ",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Lo",
+    "pattern": "\\p{Lo}",
+    "value": "中",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Lo",
+    "pattern": "\\P{Lo}",
+    "value": "中",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Lt",
+    "pattern": "\\p{Lt}",
+    "value": "ǅ",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Lt",
+    "pattern": "\\P{Lt}",
+    "value": "ǅ",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Lu",
+    "pattern": "\\p{Lu}",
+    "value": "Ω",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Lu",
+    "pattern": "\\P{Lu}",
+    "value": "Ω",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_M",
+    "pattern": "\\p{M}",
+    "value": "́",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_M",
+    "pattern": "\\P{M}",
+    "value": "́",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Mn",
+    "pattern": "\\p{Mn}",
+    "value": "́",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Mn",
+    "pattern": "\\P{Mn}",
+    "value": "́",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Mc",
+    "pattern": "\\p{Mc}",
+    "value": "ः",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Mc",
+    "pattern": "\\P{Mc}",
+    "value": "ः",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Me",
+    "pattern": "\\p{Me}",
+    "value": "⃝",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Me",
+    "pattern": "\\P{Me}",
+    "value": "⃝",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_N",
+    "pattern": "\\p{N}",
+    "value": "٣",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_N",
+    "pattern": "\\P{N}",
+    "value": "٣",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Nd",
+    "pattern": "\\p{Nd}",
+    "value": "٣",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Nd",
+    "pattern": "\\P{Nd}",
+    "value": "٣",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Nl",
+    "pattern": "\\p{Nl}",
+    "value": "Ⅳ",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Nl",
+    "pattern": "\\P{Nl}",
+    "value": "Ⅳ",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_No",
+    "pattern": "\\p{No}",
+    "value": "²",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_No",
+    "pattern": "\\P{No}",
+    "value": "²",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_P",
+    "pattern": "\\p{P}",
+    "value": "!",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_P",
+    "pattern": "\\P{P}",
+    "value": "!",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Pc",
+    "pattern": "\\p{Pc}",
+    "value": "_",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Pc",
+    "pattern": "\\P{Pc}",
+    "value": "_",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Pd",
+    "pattern": "\\p{Pd}",
+    "value": "-",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Pd",
+    "pattern": "\\P{Pd}",
+    "value": "-",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Ps",
+    "pattern": "\\p{Ps}",
+    "value": "(",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Ps",
+    "pattern": "\\P{Ps}",
+    "value": "(",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Pe",
+    "pattern": "\\p{Pe}",
+    "value": ")",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Pe",
+    "pattern": "\\P{Pe}",
+    "value": ")",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Pi",
+    "pattern": "\\p{Pi}",
+    "value": "«",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Pi",
+    "pattern": "\\P{Pi}",
+    "value": "«",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Pf",
+    "pattern": "\\p{Pf}",
+    "value": "»",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Pf",
+    "pattern": "\\P{Pf}",
+    "value": "»",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Po",
+    "pattern": "\\p{Po}",
+    "value": "!",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Po",
+    "pattern": "\\P{Po}",
+    "value": "!",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Z",
+    "pattern": "\\p{Z}",
+    "value": " ",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Z",
+    "pattern": "\\P{Z}",
+    "value": " ",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Zs",
+    "pattern": "\\p{Zs}",
+    "value": " ",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Zs",
+    "pattern": "\\P{Zs}",
+    "value": " ",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Zl",
+    "pattern": "\\p{Zl}",
+    "value": " ",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Zl",
+    "pattern": "\\P{Zl}",
+    "value": " ",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Zp",
+    "pattern": "\\p{Zp}",
+    "value": " ",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Zp",
+    "pattern": "\\P{Zp}",
+    "value": " ",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_S",
+    "pattern": "\\p{S}",
+    "value": "€",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_S",
+    "pattern": "\\P{S}",
+    "value": "€",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Sc",
+    "pattern": "\\p{Sc}",
+    "value": "€",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Sc",
+    "pattern": "\\P{Sc}",
+    "value": "€",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Sm",
+    "pattern": "\\p{Sm}",
+    "value": "+",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Sm",
+    "pattern": "\\P{Sm}",
+    "value": "+",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Sk",
+    "pattern": "\\p{Sk}",
+    "value": "^",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Sk",
+    "pattern": "\\P{Sk}",
+    "value": "^",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_So",
+    "pattern": "\\p{So}",
+    "value": "😀",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_So",
+    "pattern": "\\P{So}",
+    "value": "😀",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_C",
+    "pattern": "\\p{C}",
+    "value": "\u0000",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_C",
+    "pattern": "\\P{C}",
+    "value": "\u0000",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Cc",
+    "pattern": "\\p{Cc}",
+    "value": "\u0000",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Cc",
+    "pattern": "\\P{Cc}",
+    "value": "\u0000",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Cf",
+    "pattern": "\\p{Cf}",
+    "value": "‍",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Cf",
+    "pattern": "\\P{Cf}",
+    "value": "‍",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Co",
+    "pattern": "\\p{Co}",
+    "value": "",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Co",
+    "pattern": "\\P{Co}",
+    "value": "",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_Cn",
+    "pattern": "\\p{Cn}",
+    "value": "͸",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "complement_excludes_Cn",
+    "pattern": "\\P{Cn}",
+    "value": "͸",
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "category_in_class",
+    "pattern": "[\\p{L}0-9]+",
+    "value": "é中123",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "category_complement",
+    "pattern": "\\P{L}",
+    "value": "1",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\n",
+    "pattern": "\\n",
+    "value": "\n",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\r",
+    "pattern": "\\r",
+    "value": "\r",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\t",
+    "pattern": "\\t",
+    "value": "\t",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\\\",
+    "pattern": "\\\\",
+    "value": "\\",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\(",
+    "pattern": "\\(",
+    "value": "(",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\)",
+    "pattern": "\\)",
+    "value": ")",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\+",
+    "pattern": "\\+",
+    "value": "+",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\*",
+    "pattern": "\\*",
+    "value": "*",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\?",
+    "pattern": "\\?",
+    "value": "?",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\[",
+    "pattern": "\\[",
+    "value": "[",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\]",
+    "pattern": "\\]",
+    "value": "]",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\{",
+    "pattern": "\\{",
+    "value": "{",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\}",
+    "pattern": "\\}",
+    "value": "}",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\|",
+    "pattern": "\\|",
+    "value": "|",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "escape_\\-",
+    "pattern": "\\-",
+    "value": "-",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "invalid_\\d",
+    "pattern": "\\d",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\D",
+    "pattern": "\\D",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\s",
+    "pattern": "\\s",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\S",
+    "pattern": "\\S",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\w",
+    "pattern": "\\w",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\W",
+    "pattern": "\\W",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\b",
+    "pattern": "\\b",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\f",
+    "pattern": "\\f",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\v",
+    "pattern": "\\v",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\u0041",
+    "pattern": "\\u0041",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\x41",
+    "pattern": "\\x41",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\$",
+    "pattern": "\\$",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\a",
+    "pattern": "\\a",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\1",
+    "pattern": "\\1",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\p{Cs}",
+    "pattern": "\\p{Cs}",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\p{Greek}",
+    "pattern": "\\p{Greek}",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\p{IsBasicLatin}",
+    "pattern": "\\p{IsBasicLatin}",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\p{Letter}",
+    "pattern": "\\p{Letter}",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_\\p{lu}",
+    "pattern": "\\p{lu}",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_(?i)a",
+    "pattern": "(?i)a",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_(?:a)",
+    "pattern": "(?:a)",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_(?=a)",
+    "pattern": "(?=a)",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_(?<=a)",
+    "pattern": "(?<=a)",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_(?<name>a)",
+    "pattern": "(?<name>a)",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_(?>a)",
+    "pattern": "(?>a)",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_a*?",
+    "pattern": "a*?",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_a++",
+    "pattern": "a++",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_a{2}?",
+    "pattern": "a{2}?",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_[^]",
+    "pattern": "[^]",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_[]",
+    "pattern": "[]",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_[a-z-[q]]",
+    "pattern": "[a-z-[q]]",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_a{,2}",
+    "pattern": "a{,2}",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_[",
+    "pattern": "[",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_(",
+    "pattern": "(",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_)",
+    "pattern": ")",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_a**",
+    "pattern": "a**",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "invalid_a{1,2,3}",
+    "pattern": "a{1,2,3}",
+    "value": "a1A$\n",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "decoded_json_unicode_is_valid",
+    "pattern": "A",
+    "value": "A",
+    "match": true,
+    "search": true,
+    "valid": true
+  },
+  {
+    "name": "type_nonstring_value",
+    "pattern": "a",
+    "value": 12,
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "type_nonstring_pattern",
+    "pattern": 12,
+    "value": "a",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "type_null_value",
+    "pattern": "a",
+    "value": null,
+    "match": false,
+    "search": false,
+    "valid": true
+  },
+  {
+    "name": "type_null_pattern",
+    "pattern": null,
+    "value": "a",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "reversed_character_range",
+    "pattern": "[z-a]",
+    "value": "a",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "reversed_range_alternation",
+    "pattern": "[z-a]|b",
+    "value": "b",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "reversed_negated_range",
+    "pattern": "[^z-a]",
+    "value": "a",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "reversed_repetition",
+    "pattern": "a{9,2}",
+    "value": "aa",
+    "match": false,
+    "search": false,
+    "valid": false
+  },
+  {
+    "name": "reversed_repetition_alternation",
+    "pattern": "a{9,2}|b",
+    "value": "b",
+    "match": false,
+    "search": false,
+    "valid": false
+  }
+]

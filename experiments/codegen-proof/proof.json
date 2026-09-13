@@ -1,0 +1,168 @@
+{
+  "generator": "abnf_to_pest 0.6.0",
+  "observations": [
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "empty",
+      "pattern": ""
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "multi-digit exact",
+      "pattern": "a{12}"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "multi-digit range",
+      "pattern": "a{12,34}"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "lowercase category escape",
+      "pattern": "\\p{Lu}"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "uppercase complement escape",
+      "pattern": "\\P{Lu}"
+    },
+    {
+      "error": " --> 1:4\n  |\n1 | \\p{lu}\n  |    ^---\n  |\n  = expected IsCategory",
+      "expected_full_iregexp_validity": false,
+      "generated_parser_accepts": false,
+      "name": "case-sensitive category",
+      "pattern": "\\p{lu}"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "astral scalar",
+      "pattern": "😀"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "highest scalar",
+      "pattern": "􏿿"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "private-use boundary",
+      "pattern": ""
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "literal anchors",
+      "pattern": "^a$"
+    },
+    {
+      "error": " --> 1:2\n  |\n1 | (?i)a\n  |  ^---\n  |\n  = expected atom",
+      "expected_full_iregexp_validity": false,
+      "generated_parser_accepts": false,
+      "name": "case flag extension",
+      "pattern": "(?i)a"
+    },
+    {
+      "error": " --> 1:1\n  |\n1 | \\d\n  | ^---\n  |\n  = expected whole",
+      "expected_full_iregexp_validity": false,
+      "generated_parser_accepts": false,
+      "name": "shorthand extension",
+      "pattern": "\\d"
+    },
+    {
+      "error": " --> 1:2\n  |\n1 | a)\n  |  ^---\n  |\n  = expected EOI, range_quantifier, or atom",
+      "expected_full_iregexp_validity": false,
+      "generated_parser_accepts": false,
+      "name": "trailing junk",
+      "pattern": "a)"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "positive range",
+      "pattern": "[a-z]"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "trailing dash",
+      "pattern": "[a-]"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "leading dash",
+      "pattern": "[-a]"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "negated class",
+      "pattern": "[^a]"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "negated caret",
+      "pattern": "[^^]"
+    },
+    {
+      "error": " --> 1:3\n  |\n1 | [^]\n  |   ^---\n  |\n  = expected CCE1",
+      "expected_full_iregexp_validity": false,
+      "generated_parser_accepts": false,
+      "name": "explicit RFC exclusion",
+      "pattern": "[^]"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": false,
+      "generated_parser_accepts": true,
+      "name": "semantic reversed range",
+      "pattern": "[z-a]"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": false,
+      "generated_parser_accepts": true,
+      "name": "semantic reversed count",
+      "pattern": "a{3,2}"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "alternation",
+      "pattern": "(a|ab)c"
+    },
+    {
+      "error": null,
+      "expected_full_iregexp_validity": true,
+      "generated_parser_accepts": true,
+      "name": "class category escape",
+      "pattern": "[\\p{Lu}a-z]"
+    }
+  ],
+  "pest": "2.9.1",
+  "rules": "whole = { SOI ~ i_regexp ~ EOI }\ni_regexp = { branch ~ (^\"|\" ~ branch)* }\nbranch = { piece* }\npiece = { atom ~ (quantifier)? }\nquantifier = { (^\"*\" | ^\"+\" | ^\"?\") | range_quantifier }\nrange_quantifier = { ^\"{\" ~ QuantExact ~ (^\",\" ~ (QuantExact)?)? ~ ^\"}\" }\nQuantExact = { '0'..'9'+ }\natom = { NormalChar | charClass | (^\"(\" ~ i_regexp ~ ^\")\") }\nNormalChar = { ('\\u{00}'..'\\u{27}' | ^\",\" | ^\"-\" | '/'..'>' | '@'..'Z' | '^'..'z' | '~'..'\\u{D7FF}' | '\\u{E000}'..'\\u{10FFFF}') }\ncharClass = { ^\".\" | SingleCharEsc | charClassEsc | charClassExpr }\nSingleCharEsc = { ^\"\\\\\" ~ ('('..'+' | ^\"-\" | ^\".\" | ^\"?\" | '['..'^' | \"n\" | \"r\" | \"t\" | '{'..'}') }\ncharClassEsc = { catEsc | complEsc }\ncharClassExpr = { ^\"[\" ~ (^\"^\")? ~ (^\"-\" | CCE1) ~ CCE1* ~ (^\"-\")? ~ ^\"]\" }\nCCE1 = { (CCchar ~ (^\"-\" ~ CCchar)?) | charClassEsc }\nCCchar = { ('\\u{00}'..',' | '.'..'Z' | '^'..'\\u{D7FF}' | '\\u{E000}'..'\\u{10FFFF}') | SingleCharEsc }\ncatEsc = { \"\\\\p{\" ~ charProp ~ ^\"}\" }\ncomplEsc = { \"\\\\P{\" ~ charProp ~ ^\"}\" }\ncharProp = { IsCategory }\nIsCategory = { Letters | Marks | Numbers | Punctuation | Separators | Symbols | Others }\nLetters = { \"L\" ~ ((\"l\" | \"m\" | \"o\" | \"t\" | \"u\"))? }\nMarks = { \"M\" ~ ((\"c\" | \"e\" | \"n\"))? }\nNumbers = { \"N\" ~ ((\"d\" | \"l\" | \"o\"))? }\nPunctuation = { \"P\" ~ (('c'..'f' | \"i\" | \"o\" | \"s\"))? }\nSeparators = { \"Z\" ~ ((\"l\" | \"p\" | \"s\"))? }\nSymbols = { \"S\" ~ ((\"c\" | \"k\" | \"m\" | \"o\"))? }\nOthers = { \"C\" ~ ((\"c\" | \"f\" | \"n\" | \"o\"))? }\n"
+}

@@ -1,0 +1,37 @@
+[package]
+name = "iregexp-rs"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.85"
+description = "A checking and matching implementation of RFC 9485 I-Regexp"
+license = "MIT AND BSD-3-Clause"
+publish = false
+build = "build.rs"
+include = [
+    "/Cargo.toml",
+    "/Cargo.lock",
+    "/build.rs",
+    "/src/**",
+    "/grammar/rfc9485.abnf",
+    "/grammar/LICENSE-RFC9485.txt",
+    "/LICENSE-MIT",
+    "/README.md",
+    "/THIRD-PARTY.md",
+    "/tests/*.rs",
+    "/tests/fixtures/*.json",
+]
+
+[lib]
+name = "iregexp"
+
+[dependencies]
+pest = "=2.9.1"
+pest_derive = "=2.9.1"
+regex = "=1.13.1"
+regex-syntax = "=0.8.11"
+
+[build-dependencies]
+abnf_to_pest = "=0.6.0"
+
+[dev-dependencies]
+serde_json = "=1.0.151"
