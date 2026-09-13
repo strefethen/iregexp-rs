@@ -1,6 +1,6 @@
 # Source attribution
 
-The original library and verification code are under [MIT](LICENSE-MIT).
+The original library and verification code are under [MIT](LICENSE).
 The extracted RFC 9485 grammar is an IETF code component under the Revised
 BSD License in [grammar/LICENSE-RFC9485.txt](grammar/LICENSE-RFC9485.txt).
 The build retains that notice in the generated grammar and parser declaration.

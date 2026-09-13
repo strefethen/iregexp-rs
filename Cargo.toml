@@ -15,7 +15,7 @@ include = [
     "/src/**",
     "/grammar/rfc9485.abnf",
     "/grammar/LICENSE-RFC9485.txt",
-    "/LICENSE-MIT",
+    "/LICENSE",
     "/README.md",
     "/THIRD-PARTY.md",
     "/tests/*.rs",
