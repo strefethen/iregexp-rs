@@ -1,4 +1,10 @@
-# PROVENANCE.json checksums exact bytes, and build.rs/tests read the grammar,
-# license and fixtures as text. Keep LF on every platform; Windows runners
-# otherwise check files out with CRLF.
+# build.rs and tests read the grammar, license and fixtures as text. Keep LF on
+# every platform; Windows runners otherwise check files out with CRLF.
 * text=auto eol=lf
+
+# PROVENANCE.json checksums these imported bytes. Never convert their line
+# endings on commit or checkout.
+/spec/** -text
+/grammar/** -text
+/tests/fixtures/** -text
+/experiments/** -text

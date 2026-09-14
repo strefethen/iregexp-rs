@@ -1,9 +1,11 @@
 version: 2
 updates:
   # Root crate only. experiments/ manifests are checksummed imports and must
-  # stay unchanged.
+  # stay unchanged. Compatible releases update Cargo.lock only, so the
+  # qualified Cargo.toml floors don't move; a major release edits the manifest.
   - package-ecosystem: cargo
     directory: /
+    versioning-strategy: increase-if-necessary
     schedule:
       interval: weekly
     cooldown:

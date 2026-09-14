@@ -15,14 +15,20 @@ permissions:
   contents: read
 
 env:
-  CARGO_TERM_COLOR: always
   RELEASE_TAG: ${{ github.ref_type == 'tag' && github.ref_name || inputs.tag }}
 
 jobs:
-  verify:
-    name: Verify release candidate
+  ci:
+    name: CI on release tag
+    uses: ./.github/workflows/ci.yml
+    with:
+      ref: refs/tags/${{ github.ref_type == 'tag' && github.ref_name || inputs.tag }}
+
+  notes:
+    name: Prepare release notes
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    needs: ci
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
         with:
@@ -37,21 +43,6 @@ jobs:
             echo "ERROR: tag ${RELEASE_TAG} does not match Cargo.toml version ${cargo_version}." >&2
             exit 1
           fi
-
-      - name: Verify publish settings
-        run: bash scripts/ci/verify-private-package.sh
-
-      - name: Verify imported file provenance
-        run: python3 scripts/check-provenance.py
-
-      - name: Set up Rust
-        uses: dtolnay/rust-toolchain@stable
-
-      - name: Cache Rust build artifacts
-        uses: Swatinem/rust-cache@v2
-
-      - name: Test
-        run: cargo test --all-features --locked
 
       # The release body is the CHANGELOG section for this tag. A tag with no
       # section is a hard failure rather than a silently empty release page.
@@ -83,7 +74,7 @@ jobs:
   release:
     name: Publish GitHub release
     runs-on: ubuntu-latest
-    needs: verify
+    needs: notes
     timeout-minutes: 10
     permissions:
       contents: write
