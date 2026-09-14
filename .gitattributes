@@ -1,0 +1,4 @@
+# PROVENANCE.json checksums exact bytes, and build.rs/tests read the grammar,
+# license and fixtures as text. Keep LF on every platform; Windows runners
+# otherwise check files out with CRLF.
+* text=auto eol=lf

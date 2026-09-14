@@ -1,0 +1,101 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v[0-9]*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Existing git tag to release (example: v0.1.0)"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+  RELEASE_TAG: ${{ github.ref_type == 'tag' && github.ref_name || inputs.tag }}
+
+jobs:
+  verify:
+    name: Verify release candidate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: refs/tags/${{ env.RELEASE_TAG }}
+          persist-credentials: false
+
+      - name: Verify tag matches Cargo.toml version
+        run: |
+          set -euo pipefail
+          cargo_version="$(sed -n 's/^version = "\(.*\)"$/\1/p' Cargo.toml | head -n 1)"
+          if [ "v${cargo_version}" != "${RELEASE_TAG}" ]; then
+            echo "ERROR: tag ${RELEASE_TAG} does not match Cargo.toml version ${cargo_version}." >&2
+            exit 1
+          fi
+
+      - name: Verify publish settings
+        run: bash scripts/ci/verify-private-package.sh
+
+      - name: Verify imported file provenance
+        run: python3 scripts/check-provenance.py
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust build artifacts
+        uses: Swatinem/rust-cache@v2
+
+      - name: Test
+        run: cargo test --all-features --locked
+
+      # The release body is the CHANGELOG section for this tag. A tag with no
+      # section is a hard failure rather than a silently empty release page.
+      - name: Extract release notes from CHANGELOG
+        run: |
+          set -euo pipefail
+          version="${RELEASE_TAG#v}"
+          awk -v ver="$version" '
+            index($0, "## [" ver "]") == 1 { capture = 1; next }
+            capture && index($0, "## [") == 1 { exit }
+            capture && index($0, "[" ver "]: ") == 1 { next }
+            capture { print }
+          ' CHANGELOG.md | sed -e '/./,$!d' > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            echo "ERROR: CHANGELOG.md has no entry for ${RELEASE_TAG}." >&2
+            echo "Expected a section headed '## [${version}] - <date>'." >&2
+            exit 1
+          fi
+          echo "Release notes for ${RELEASE_TAG}:"
+          cat release-notes.md
+
+      - name: Upload release notes
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-notes
+          path: release-notes.md
+          if-no-files-found: error
+
+  release:
+    name: Publish GitHub release
+    runs-on: ubuntu-latest
+    needs: verify
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v8
+        with:
+          name: release-notes
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: ${{ env.RELEASE_TAG }}
+          name: ${{ env.RELEASE_TAG }}
+          body_path: release-notes.md
+          generate_release_notes: true
