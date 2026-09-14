@@ -4,8 +4,13 @@ version = "0.1.0"
 edition = "2021"
 rust-version = "1.85"
 description = "A checking and matching implementation of RFC 9485 I-Regexp"
+keywords = ["regex", "i-regexp", "rfc9485", "jsonpath", "ietf"]
+categories = ["text-processing", "parser-implementations"]
 repository = "https://github.com/strefethen/iregexp-rs"
+homepage = "https://github.com/strefethen/iregexp-rs"
+readme = "README.md"
 license = "MIT AND BSD-3-Clause"
+# Distributed from GitHub only; this crate is never published to crates.io.
 publish = false
 build = "build.rs"
 include = [
@@ -15,6 +20,7 @@ include = [
     "/src/**",
     "/grammar/rfc9485.abnf",
     "/grammar/LICENSE-RFC9485.txt",
+    "/CHANGELOG.md",
     "/LICENSE",
     "/README.md",
     "/THIRD-PARTY.md",

@@ -10,6 +10,11 @@ use regex::Regex;
 
 mod syntax;
 
+// Compiles and runs the README's Rust examples as doctests.
+#[cfg(doctest)]
+#[doc = include_str!("../README.md")]
+struct ReadmeDoctests;
+
 /// Selects the matching semantics used by a compiled I-Regexp.
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum MatchMode {

@@ -1,0 +1,65 @@
+name: Bug Report
+description: Report incorrect checking, matching, or errors in iregexp-rs
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please report security vulnerabilities privately through the
+        [Security tab](https://github.com/strefethen/iregexp-rs/security), not here.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened? What did you expect?
+    validations:
+      required: true
+  - type: input
+    id: pattern
+    attributes:
+      label: Pattern
+      description: The exact I-Regexp pattern, as a Rust string literal if it contains escapes.
+      placeholder: 'r"\p{Lu}[a-z]*"'
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Match mode
+      options:
+        - MatchMode::Full
+        - MatchMode::Search
+        - Both
+        - Not applicable (compilation fails)
+    validations:
+      required: true
+  - type: textarea
+    id: input
+    attributes:
+      label: Input text
+      description: The text passed to `is_match`, if any.
+      render: text
+    validations:
+      required: false
+  - type: textarea
+    id: output
+    attributes:
+      label: Actual result
+      description: The `is_match` result or the full `{:?}` of the returned `Error`.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: normative
+    attributes:
+      label: Normative reference
+      description: The RFC 9485 section (or XSD rule it adopts) that supports the expected behavior. Differences from other regex engines are expected where I-Regexp defines a construct differently.
+    validations:
+      required: false
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: "OS, Rust version, and the iregexp-rs tag or commit."
+    validations:
+      required: true
