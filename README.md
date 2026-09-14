@@ -25,8 +25,9 @@ in whole-string matching, even when its first alternative is shorter.
 
 - All 36 RFC general-category names and their complements are supported on
   Unicode scalar values. Rust `str` excludes surrogate code points; `Cs` is not
-  an allowed RFC category. The pinned matcher uses Unicode 16.0.0 data.
-  Unicode normalization is not performed.
+  an allowed RFC category. Category data comes from `regex-syntax`; this
+  release is qualified with regex-syntax 0.8.11 (Unicode 16.0.0). Unicode
+  normalization is not performed.
 - `.` matches one scalar value except CR and LF. Other line separators match.
 - `^` and `$` are literals. Escaping `$`, `\d`, flags, lookaround, backreferences,
   lazy quantifiers, class subtraction and Unicode block names are invalid.
