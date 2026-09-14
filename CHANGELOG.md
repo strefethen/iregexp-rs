@@ -49,10 +49,11 @@ a parser generated at build time from the RFC's own ABNF grammar.
   isolated subprocess.
 - `PROVENANCE.json` and `scripts/check-provenance.py` checksum every imported
   RFC text, grammar, fixture, and experiment.
-- CI on Linux, macOS, and Windows with formatting, Clippy, tests, release-mode
-  tests, rustdoc, MSRV, packaged-build, and `cargo audit` gates. The README's
-  Rust examples run as doctests.
-- A tag-driven release workflow publishes the matching CHANGELOG section as the
-  GitHub release notes.
+- CI runs Clippy and tests on Linux, macOS, and Windows. Formatting,
+  provenance, release-mode tests, rustdoc, MSRV, packaged-build, and
+  `cargo audit` gates run on Linux. The README's Rust examples run as doctests.
+- A tag-driven release workflow reruns the full CI workflow on the tagged
+  commit, then publishes the matching CHANGELOG section as the GitHub release
+  notes.
 
 [0.1.0]: https://github.com/strefethen/iregexp-rs/releases/tag/v0.1.0

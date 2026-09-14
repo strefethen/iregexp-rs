@@ -229,7 +229,7 @@ every imported file: RFC texts, grammar, fixtures and experiments.
 | `grammar/` | RFC 9485 ABNF and its IETF code-component license |
 | `spec/` | Unmodified RFC 9485 and RFC 9535 texts |
 | `tests/` | Conformance, fixture, generation and resource tests |
-| `experiments/` | Code-generation proof and qualification adapter that predate the crate, kept for provenance |
+| `experiments/` | Historical code-generation proof and qualification adapter that predate the crate. Kept byte-for-byte for provenance; not built or maintained |
 | `scripts/` | `verify.sh`, the provenance check, and CI helpers |
 
 ## Building from Source
@@ -242,20 +242,29 @@ cd iregexp-rs
 cargo test --locked
 ```
 
-The full local gate matches CI. It needs the 1.85.0 toolchain
+The full local gate needs the 1.85.0 toolchain
 (`rustup toolchain install 1.85.0`):
 
 ```bash
 ./scripts/verify.sh
 ```
 
-It runs the provenance check, `cargo fmt --check`, strict Clippy for all targets,
-debug and release tests, rustdoc with warnings denied, tests on Rust 1.85, and a
-local packaged build.
+It runs the provenance check, `cargo fmt --check`, `cargo check`, strict Clippy
+for all targets, debug and release tests, rustdoc with warnings denied, tests on
+Rust 1.85, and a local packaged build.
 
-On every push and pull request, CI runs formatting, Clippy and tests on Linux,
-macOS and Windows. It also runs release-mode tests, rustdoc, the MSRV (1.85)
-check, a packaged build and `cargo audit`.
+CI runs on every push and pull request:
+
+| Job | Runners | Gates |
+|---|---|---|
+| Build and test | Linux, macOS, Windows | Strict Clippy, debug tests (formatting on Linux only) |
+| Verify | Linux | Provenance checksums, `publish = false`, CHANGELOG version, release-mode tests, rustdoc, packaged build |
+| MSRV | Linux | Debug tests on Rust 1.85 |
+| Security audit | Linux | `cargo audit` against the RustSec advisory database |
+
+Stable-toolchain jobs use a pinned Rust release, so a new Clippy lint never
+turns CI red on its own. A release tag runs this whole workflow again before
+anything is published.
 
 ## Project Status
 

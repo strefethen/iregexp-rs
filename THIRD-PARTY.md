@@ -35,7 +35,9 @@ and [XSD 1.1 regular expressions](https://www.w3.org/TR/2012/REC-xmlschema11-2-2
 the RFC texts, normative grammar, the code-generation proof and qualification
 adapter under `experiments/`, and the test fixtures. Those bytes are retained
 unchanged, and `scripts/check-provenance.py` verifies them. The experiments
-record qualification work that predates the crate; the root crate and its
+are historical records of qualification work that predates the crate. They
+are not built or maintained, and they may reference crates, data or paths
+that exist only in their original workspace. The root crate and its
 asserting tests implement the reusable library.
 
 ## Cargo dependencies
