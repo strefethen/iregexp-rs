@@ -22,9 +22,9 @@ Work directly in this canonical checkout; no worktrees.
 - `PROVENANCE.json` checksums the imported RFC texts, grammar, fixtures and
   experiments. Imported bytes stay unchanged; `.gitattributes` marks those paths
   `-text` so Git never converts their line endings.
-- Dependency requirements are caret ranges. Their floors are the versions the
-  latest release was qualified with, and `Cargo.lock` may resolve newer
-  compatible releases. Dependabot uses `increase-if-necessary`, so only a major
+- Dependency requirements are caret ranges. Each floor is the version qualified
+  when that floor was last raised (for 0.1.0, `Cargo.lock` at the tag). CI tests
+  the locked versions, and `Cargo.lock` may resolve newer compatible releases. Dependabot uses `increase-if-necessary`, so only a major
   upgrade edits `Cargo.toml`. Raising a floor requires the full verification
   below plus a CHANGELOG note.
 

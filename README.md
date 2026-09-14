@@ -253,7 +253,7 @@ It runs the provenance check, `cargo fmt --check`, `cargo check`, strict Clippy
 for all targets, debug and release tests, rustdoc with warnings denied, tests on
 Rust 1.85, and a local packaged build.
 
-CI runs on every push and pull request:
+CI runs on every push to `main` and every pull request targeting `main`:
 
 | Job | Runners | Gates |
 |---|---|---|
