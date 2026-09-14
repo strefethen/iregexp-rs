@@ -1,8 +1,7 @@
 # iregexp-rs
 
-Standalone RFC 9485 I-Regexp library. Read HANDOFF.md before implementation.
-The parent global agent contract applies. Work directly in this canonical
-checkout; no worktrees. No other repository may be changed by this initiative.
+Standalone RFC 9485 I-Regexp library. The parent global agent contract applies.
+Work directly in this canonical checkout; no worktrees.
 
 ## Invariants
 
@@ -20,12 +19,22 @@ checkout; no worktrees. No other repository may be changed by this initiative.
   matching modes, and exercise documented limits. Do not change fixtures to hide
   failures; explain a fixture/spec disagreement with normative evidence.
 - Retain RFC code-component license notices with the grammar and derivatives.
+- `PROVENANCE.json` checksums the imported RFC texts, grammar, fixtures and
+  experiments. Imported bytes stay unchanged; `.gitattributes` keeps them LF.
+- Dependency requirements are caret ranges whose floors are the qualified
+  versions in `Cargo.lock`. Raising a floor requires the full verification below.
 
 ## Verification
 
-Use Cargo check, fmt --check, strict Clippy for all targets/features, tests,
-release tests where resource behavior can differ, and rustdoc. Verify the declared
-MSRV and a local packaged build. Publication, pushes and remote creation remain
-outside this local implementation scope. The continuation task follows the
-global candidate/review workflow in this repository. Obtain fresh independent
-review of the exact candidate before claiming the library ready.
+`./scripts/verify.sh` runs the provenance check, fmt, check, strict Clippy for
+all targets/features, debug and release tests, rustdoc, the declared MSRV and a
+local packaged build. CI (`.github/workflows/ci.yml`) runs the same gates on
+Linux, macOS and Windows.
+
+## Release
+
+The crate is distributed from GitHub only; `publish = false` is permanent and
+CI enforces it. A release bumps `version` in `Cargo.toml`, adds the matching
+`## [x.y.z] - YYYY-MM-DD` section to `CHANGELOG.md`, and pushes a `vX.Y.Z` tag.
+The release workflow refuses a tag without matching version and notes. Pushes,
+tags and GitHub settings changes require Steve's explicit approval.

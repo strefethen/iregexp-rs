@@ -1,7 +1,17 @@
 /target/
 **/target/
 /experiments/codegen-proof/rerun.json
-/evidence/generated/
-/evidence/*.log
-/evidence/*-live.json
 .DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Claude Code
+.claude/
+
+# Agent bookkeeping (kept locally, never published)
+/HANDOFF.md
+/evidence/
+.tickets/
